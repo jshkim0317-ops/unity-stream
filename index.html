@@ -2,45 +2,47 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
+    <meta name="color-scheme" content="light dark" />
     <title>Unity Stream</title>
 
-    <!-- ✅ UPDATE ONLY THIS VALUE when your IP (or tunnel URL) changes -->
+    <!-- =========================================================
+         UPDATE ONLY THIS VALUE when your tunnel URL changes
+         Example:
+           https://accepted-motivation-developers-contained.trycloudflare.com/receiver/index.html
+         ========================================================= -->
     <script>
-      // Change this to either:
-      //   "http://10.48.xxx.xxx/receiver/index.html"   (local)
-      // or "https://xxxx.trycloudflare.com/receiver/index.html" (tunnel)
-      const TARGET_URL = "http://10.48.206.234/receiver/index.html";
+      const TARGET_URL = "https://accepted-motivation-developers-contained.trycloudflare.com/receiver/index.html";
 
-      // Immediate redirect
+      // Redirect ASAP
       window.location.replace(TARGET_URL);
     </script>
 
+    <!-- If JS is disabled, still redirect -->
     <noscript>
-      <!-- Fallback redirect if JS is disabled -->
-      <meta http-equiv="refresh" content="0; url=http://10.48.206.234/receiver/index.html" />
+      <meta http-equiv="refresh" content="0; url=https://accepted-motivation-developers-contained.trycloudflare.com/receiver/index.html" />
     </noscript>
 
     <style>
-      :root { color-scheme: light dark; }
       body {
         font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
         margin: 0;
         padding: 28px;
         line-height: 1.4;
+        display: grid;
+        place-items: center;
+        min-height: 100vh;
       }
       .card {
-        max-width: 560px;
-        margin: 0 auto;
+        width: min(640px, 92vw);
         border: 1px solid rgba(127,127,127,0.25);
-        border-radius: 14px;
-        padding: 18px 18px 16px;
+        border-radius: 16px;
+        padding: 18px 18px 14px;
       }
       h1 { font-size: 18px; margin: 0 0 10px; }
       p { margin: 10px 0; opacity: 0.9; }
       a {
         display: inline-block;
-        margin-top: 6px;
         font-size: 16px;
         padding: 10px 12px;
         border-radius: 10px;
@@ -48,30 +50,25 @@
         text-decoration: none;
       }
       a:active { transform: scale(0.99); }
-      code { opacity: 0.8; }
+      code { opacity: 0.8; word-break: break-all; }
+      .tiny { font-size: 13px; opacity: 0.7; }
     </style>
   </head>
 
   <body>
     <div class="card">
       <h1>Redirecting to the live Unity stream…</h1>
-      <p>If you aren’t redirected automatically in a second or two, tap:</p>
-      <p><a id="link" href="http://10.48.206.234/receiver/index.html">Open the stream</a></p>
-      <p style="font-size: 13px; opacity: 0.7;">
-        Target: <code id="targetText">http://10.48.206.234/receiver/index.html</code>
-      </p>
+      <p>If you aren’t redirected automatically, tap:</p>
+      <p><a id="link" href="#">Open the stream</a></p>
+      <p class="tiny">Target: <code id="targetText"></code></p>
     </div>
 
     <script>
-      // Keep the fallback link in sync with TARGET_URL
+      // Keep fallback UI in sync with TARGET_URL
       const link = document.getElementById("link");
       const targetText = document.getElementById("targetText");
       link.href = TARGET_URL;
-      link.textContent = "Open the stream";
       targetText.textContent = TARGET_URL;
-
-      // Also update the <noscript> meta refresh if you want single-source truth:
-      // (Optional: leave as-is; most users have JS enabled)
     </script>
   </body>
 </html>
