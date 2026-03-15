@@ -6,21 +6,26 @@
     <meta name="color-scheme" content="light dark" />
     <title>Unity Stream</title>
 
-    <!-- =========================================================
-         UPDATE ONLY THIS VALUE when your tunnel URL changes
-         Example:
-           https://accepted-motivation-developers-contained.trycloudflare.com/receiver/index.html
-         ========================================================= -->
     <script>
-      const TARGET_URL = "https://usc-derek-tigers-beads.trycloudflare.com";
+      // =========================================================
+      // UPDATE ONLY THIS when the tunnel URL changes
+      // Example: "https://xxxx.trycloudflare.com"
+      // =========================================================
+      const TUNNEL_BASE = "https://usc-derek-tigers-beads.trycloudflare.com";
+
+      // Choose which page you want viewers to land on:
+      const VIEW_PATH = "/receiver/index.html"; // or "/videoplayer/index.html"
+
+      // Final redirect target
+      const TARGET_URL = TUNNEL_BASE.replace(/\/+$/, "") + VIEW_PATH;
 
       // Redirect ASAP
       window.location.replace(TARGET_URL);
     </script>
 
-    <!-- If JS is disabled, still redirect -->
     <noscript>
-      <meta http-equiv="refresh" content="0; url=https://usc-derek-tigers-beads.trycloudflare.com" />
+      <!-- If JS is disabled, user can still tap the link below -->
+      <meta http-equiv="refresh" content="0; url=/receiver/index.html" />
     </noscript>
 
     <style>
@@ -64,9 +69,11 @@
     </div>
 
     <script>
-      // Keep fallback UI in sync with TARGET_URL
+      // Keep fallback UI in sync with the computed TARGET_URL
       const link = document.getElementById("link");
       const targetText = document.getElementById("targetText");
+
+      // TARGET_URL is defined in the head script (global)
       link.href = TARGET_URL;
       targetText.textContent = TARGET_URL;
     </script>
