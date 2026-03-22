@@ -7,21 +7,10 @@
     <title>Unity Stream</title>
 
     <script>
-      // =========================================================
-      // UPDATE ONLY THIS when your Wi-Fi/local IP changes
-      // Example: "http://192.168.1.25:80"
-      // Change the port if your Unity Render Streaming server uses a different one.
-      // =========================================================
-      const LOCAL_BASE = "http://10.48.80.207";
-
-      // Choose which page you want viewers to land on:
-      const VIEW_PATH = "/receiver/index.html"; // or "/videoplayer/index.html"
-
-      // Final redirect target
-      const TARGET_URL = LOCAL_BASE.replace(/\/+$/, "") + VIEW_PATH;
-
-      // Redirect ASAP
-      window.location.replace(TARGET_URL);
+     const LOCAL_BASE = "http://10.48.80.207:8080";
+  const VIEW_PATH = "/receiver/index.html";
+  const TARGET_URL = LOCAL_BASE.replace(/\/+$/, "") + VIEW_PATH;
+  window.location.replace(TARGET_URL);
     </script>
 
     <noscript>
