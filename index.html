@@ -8,16 +8,17 @@
 
     <script>
       // =========================================================
-      // UPDATE ONLY THIS when the tunnel URL changes
-      // Example: "https://xxxx.trycloudflare.com"
+      // UPDATE ONLY THIS when your Wi-Fi/local IP changes
+      // Example: "http://192.168.1.25:80"
+      // Change the port if your Unity Render Streaming server uses a different one.
       // =========================================================
-      const TUNNEL_BASE = "https://usc-derek-tigers-beads.trycloudflare.com";
+      const LOCAL_BASE = "http://10.48.80.207";
 
       // Choose which page you want viewers to land on:
       const VIEW_PATH = "/receiver/index.html"; // or "/videoplayer/index.html"
 
       // Final redirect target
-      const TARGET_URL = TUNNEL_BASE.replace(/\/+$/, "") + VIEW_PATH;
+      const TARGET_URL = LOCAL_BASE.replace(/\/+$/, "") + VIEW_PATH;
 
       // Redirect ASAP
       window.location.replace(TARGET_URL);
@@ -25,7 +26,7 @@
 
     <noscript>
       <!-- If JS is disabled, user can still tap the link below -->
-      <meta http-equiv="refresh" content="0; url=/receiver/index.html" />
+      <meta http-equiv="refresh" content="0; url=http://10.48.80.207/receiver/index.html" />
     </noscript>
 
     <style>
@@ -69,11 +70,9 @@
     </div>
 
     <script>
-      // Keep fallback UI in sync with the computed TARGET_URL
       const link = document.getElementById("link");
       const targetText = document.getElementById("targetText");
 
-      // TARGET_URL is defined in the head script (global)
       link.href = TARGET_URL;
       targetText.textContent = TARGET_URL;
     </script>
